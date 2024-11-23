@@ -22,25 +22,22 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest) {
-        return productService.createProduct(productRequest);
+        productService.createProduct(productRequest);
     }
     @GetMapping
     public List<ProductResponse> getAllProducts(){
-        return productService.getAllProducts();
+        productService.getAllProducts();
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> updateProduct(@PathVariable String id, @ RequestBody ProductRequest productRequest) {
+    public void updateProduct(@PathVariable String id, @RequestBody ProductRequest productRequest) {
         productService.updateProduct(id, productRequest);
-        return ResponseEntity.noContent().build();
+
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> deleteProduct(@PathVariable String id) {
+    public void deleteProduct(@PathVariable String id) {
         productService.deleteProduct(id);
-        return ResponseEntity.noContent().build();
     }
 
 }

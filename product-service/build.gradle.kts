@@ -31,8 +31,11 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.fasterxml.jackson.core:jackson-databind")
+    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("io.rest-assured:rest-assured:5.3.0")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
-    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
