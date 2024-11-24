@@ -22,11 +22,11 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductResponse createProduct(@RequestBody ProductRequest productRequest) {
-        productService.createProduct(productRequest);
+       return productService.createProduct(productRequest);
     }
     @GetMapping
     public List<ProductResponse> getAllProducts(){
-        productService.getAllProducts();
+        return productService.getAllProducts();
     }
 
     @PutMapping("/{id}")

@@ -70,8 +70,6 @@ public class ProductService {
         productRepository.save(product);
 
 
-
-
         log.info("Product {} has been updated", product.getId());
     }
 

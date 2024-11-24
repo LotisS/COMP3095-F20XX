@@ -1,0 +1,37 @@
+
+
+services:
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    image: product-service:1.0
+    container_name: product-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    networks:
+      - microservices-network
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootadmin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo-data:/data/db
+      - ./init/mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - microservices-network
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  microservices-network:
+    driver: bridge
